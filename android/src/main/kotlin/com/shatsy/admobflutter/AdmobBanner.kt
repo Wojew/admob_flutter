@@ -22,7 +22,7 @@ class AdmobBanner(context: Context, messenger: BinaryMessenger, id: Int, args: H
     init {
         channel.setMethodCallHandler(this)
 
-        adView.adSize = getSize(context, args["adSize"] as HashMap<*, *>)
+        adView.setAdSize(getSize(context, args["adSize"] as HashMap<*, *>))
         adView.adUnitId = args["adUnitId"] as String
 
         val adRequestBuilder = AdRequest.Builder()
