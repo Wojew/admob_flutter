@@ -59,10 +59,8 @@ class AdmobReward(private val flutterPluginBinding: FlutterPlugin.FlutterPluginB
                                 allAds[id]?.adListener?.onAdClosed()
                             }
 
-                            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
-                                adError?.let {
-                                    allAds[id]?.adListener?.onAdFailedToLoad(LoadAdError(it.code, it.message, "admob_flutter", adError, null))
-                                }
+                            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                                allAds[id]?.adListener?.onAdFailedToLoad(LoadAdError(adError.code, adError.message, "admob_flutter", adError, null))
                             }
 
                             override fun onAdShowedFullScreenContent() {
